@@ -39,22 +39,18 @@ public:
 
   Value& get_or_insert(const Key& key) {
     // TODO: You must implement this method. You may create other methods if
-    Node* current;
-    current = root;
-    Node* current2;
-    if(root == nullptr) {
-        root = new Node(key);
-        current = root;
-        return  root->key;
+    return get_or_insert(key, root);
+  }
+  Value& get_or_insert(const Key& key, Node *&current) {
+    if(current == nullptr) {
+      current = new Node(key);
+      return current->value;
     } else if (current->key == key) {
-        return current->value; 
-    }
-    if (key < current->key) {
-        current2 = current;
-        return get_or_insert(key, current->left);
+      return current->value;
+    } else if (key < current->key) {
+      return get_or_insert(key, current->left);
     } else {
-        current2 = current;
-        return get_or_insert(key, current->right);
+      return get_or_insert(key, current->right);
     }
   }
 

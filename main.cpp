@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "bst_map.h"
+#include "header.h"
 
 using namespace std;
 
